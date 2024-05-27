@@ -552,7 +552,6 @@ img2 img{
 .img3 img{
     width: 440px;
     height: 400px;
-    margin-top: 100px;
 }
 
 /*styling for the fourth image container*/
@@ -630,6 +629,132 @@ img2 img{
 .img9 img{
     width: 250px;
     height: 320px;
+}
+
+/*media queries for desktop*/
+@media(min-width: 1024px){
+    .header{
+        height: 80vh;
+        background-position: top;
+    }
+
+    .navbar{
+        height: 100px;
+    }
+
+    .form{
+        left:1100px;
+    }
+
+    .search{
+        margin-left: 1440px;
+    }
+
+    .aboutus{
+        margin-left: 20px;
+        margin-top: -80px;
+        padding: 30px;
+        padding-left: 4px;
+        width: 980px;
+    
+    }
+
+    .aboutus h2{
+        margin-left: 300px;
+    }
+
+    .aboutus p{
+        width: 100%;
+        margin-left: 20px;
+        letter-spacing: 1.5px;
+        margin-top: 10px;
+        margin-bottom: -5px;
+
+    }
+
+    .services h2{
+        padding-left: 600px;
+    }
+
+    .contactus h2, .contactus p{
+        padding-left: 700px;
+    }
+
+    .img3 img{
+        width: 420px;
+        height: 380px;
+        margin-bottom: 100px;
+        margin-top: 40px;
+    }
+
+    .img4 img{
+        width:1210px;
+    }
+
+    .img5{
+        text-align: left;
+        margin-top: -120px;
+        margin-bottom: 40px;
+    
+    }
+    
+    .img5 img{
+        width: 250px;
+        height: 320px;
+    }
+    
+    /*styling for the sixth image container*/
+    .img6{
+        text-align: left;
+        margin-left: 290px;
+        margin-top:-360px;
+        margin-bottom: 150px;
+    }
+    
+    .img6 img{
+        width: 250px;
+        height: 320px;
+    }
+    
+    /*styling for the seventh image container*/
+    .img7{
+        text-align: left;
+        margin-left: 590px;
+        margin-top:-470px;
+        margin-bottom: 400px;
+    }
+    
+    .img7 img{
+        width: 250px;
+        height: 320px;
+    }
+    
+    /*styling for the eighth image container*/
+    .img8{
+        text-align: left;
+        margin-left: 880px;
+        margin-top:-725px;
+        margin-bottom: 40px;
+    }
+    
+    .img8 img{
+        width: 250px;
+        height: 320px;
+    }
+    
+    /*styling for the ninth image container*/
+    .img9{
+        text-align: right;
+        margin-left: 910px;
+        margin-top:-364px;
+        margin-bottom: 0px;
+    }
+    
+    .img9 img{
+        width: 250px;
+        height: 320px;
+    }
+   
 }
 
 
