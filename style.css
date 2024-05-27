@@ -676,8 +676,42 @@ img2 img{
         padding-left: 600px;
     }
 
-    .contactus h2, .contactus p{
-        padding-left: 700px;
+    .contactus h2{
+        font-size: 25px;
+        color: #fffefe;
+        margin-bottom: 5px;
+        margin-top: -700px;
+        padding-left: 600px;
+        text-decoration: underline;
+    }
+    
+    /*styling for the contact us section paragraph*/
+    .contactus p{
+        font-size: 19px;
+        line-height: 1.5;
+        color: #ffffff;
+        padding-left: 600px;
+    }
+    
+    /*styling for the contact us section subheading*/
+    .contactus h3{
+        font-size: 25px;
+        color: rgb(255, 255, 255);
+        margin-top: -165px;
+        margin-bottom: -10px;
+    }
+    
+    /*styling for strong elements inside contact us section*/
+    .contactus strong{
+        font-weight: bold;
+    }
+    
+    .para1 p{
+        text-align: left;
+        padding: 18px;
+        font-size: 50px;
+        opacity: 0;
+        animation: fadeInText 3s ease forwards;
     }
 
     .img3 img{
