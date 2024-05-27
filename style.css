@@ -7,6 +7,7 @@
 /*set the height of body and HTML to 100%*/
 body, html{
     height: 100%;
+    width: 100%;
 }
 
 /*styling for the header section*/
