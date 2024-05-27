@@ -1,0 +1,634 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+}
+
+/*set the height of body and HTML to 100%*/
+body, html{
+    height: 100%;
+}
+
+/*styling for the header section*/
+.header{
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    min-height: 100px;
+    position: relative;
+
+}
+
+/*dark overlay for the header section*/
+.header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+/*styling for the nav bar*/
+.navbar{
+    width: 100%;
+    height: 75px;
+    margin: auto;
+    z-index: 2;
+
+}
+
+/*full screen image styling*/
+.img1{
+    height: 100vh;
+    overflow: hidden;
+}
+
+.img1 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* styling for the logo*/
+.icon{
+    flex: 0 0 auto;
+    width: 200px;
+    float: left;
+    height: 50px;
+}
+
+.logo{
+    color:#ffffff ;
+    font-size: 35px;
+    font-family: Arial;
+    margin: 0;
+    padding-left: 10px;
+    float: left;
+    padding-top: 2px;
+}
+
+/*menu container styling*/
+.menu{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/*unordered list styling*/
+ul{
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 0;
+}
+
+/*list items styling*/
+ul li{
+    list-style: none;
+    margin-right:150px;
+    margin-top: -110px;
+    border: 2px solid #080808;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+ul li:last-child{
+    margin-right:0;
+}
+
+/*link styling*/
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+/*hover effect for links*/
+ul li a:hover{
+    color: #040007e8;
+}
+
+/*styling search container*/
+.search{
+    display: flex;
+    margin-left: 1240px;
+    margin-top: -100px;
+}
+
+/*styling for search input*/
+.search input[type="text"]{
+    padding: 5px;
+    border: 2px solid #5c0d55;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding-left: 10px;
+}
+
+/*styling for search button*/
+.search.search-btn{
+    background-color: #f8f6f6;
+    border: none;
+    color: rgb(0, 0, 0);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/*styling for ion-icon inside search button*/
+.search .search-btn ion-icon{
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+/*keyframes for moveLeft animation*/
+@keyframes moveLeft{
+    0% {transform: translateX(100%);}
+    100% {transform: translateX(0);}
+}
+
+/*styling for paragraph with class para*/
+.para{
+    padding-left: 20px;
+    padding-top: -20px;
+    padding-bottom: 5px;
+    font-family:  Arial, sans-serif;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+    color: #f8f6f6;
+    animation: moveLeft 2s ease forwards;
+}
+
+/*form container styling*/
+.form{
+    width: 270px;
+    height: 330px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
+    position: absolute;
+    top: 140px;
+    left: 1100px;
+    border-radius:0px;
+    padding: 25px;
+}
+
+/*form heading styling*/
+.form h2{
+    width: 200px;
+    height: 20px;
+    font-family: sans-serif;
+    text-align:center;
+    color: #6b418d;
+    font-size: 19px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 9px;
+}
+
+/*form input fields styling*/
+.form input{
+    width: 200px;
+    height: 30px;
+    background: transparent;
+    border-bottom: 1px solid rgb(110, 39, 151);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    font-family: sans-serif;
+}
+
+/*remove outline when input is focused*/
+.form input:focus{
+    outline: none;
+}
+
+/*placeholder text styling*/
+::placeholder{
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*button styling*/
+.btnn{
+    width: 240px;
+    height: 40px;
+    background: #8951b6;
+    border: none;
+    margin-top: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+/*button hover effect*/
+.btnn:hover{
+    background: #fff;
+    color: #f1eef3;
+}
+
+/*link styling inside button*/
+.btnn a{
+    text-decoration: none;
+    color: rgb(12, 12, 12);
+    font-weight: bold;
+}
+
+/*link container inside form*/
+.form .link{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    padding-top: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+/*link styling inside form link*/
+.form .link a{
+    text-decoration: none;
+    color: #a854ed;
+}
+
+/*icons heading styling*/
+.icons h3{
+    text-align: center;
+    padding-top: 250px;
+}
+
+/*social media icons styling*/
+.icons a{
+    text-decoration: none;
+    color: #fff;
+}
+
+/*ion-icon styling*/
+.icons ion-icon{
+    color: #ffffff;
+    font-size: 30px;
+    padding-left: 20px;
+    padding-top: 10px;
+
+}
+
+/*note container styling*/
+.note{
+    background: linear-gradient(135deg,  rgba(63, 41, 85, 0.5), rgba(37, 66, 102, 0.69));
+    border-radius: 10px;
+    width: auto;
+    max-width: 65%;
+    padding: 20px;
+    margin: 20px ;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    margin-top: -789px;
+}
+
+/*note heading styling*/
+.note h2{
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    font-weight: bold;
+    font-style:italic;
+    font-size: 27px;
+    text-decoration: underline;
+}
+
+/*note paragraph styling*/
+.note p{
+    color: #0d0d0e;
+    font-size: 17px;
+    width: 90%;
+    margin-left: 20px;
+    letter-spacing: 1.5px;
+    color: #fff;
+    
+}
+
+/*consider container styling*/
+.consider{
+    background: linear-gradient(135deg, rgba(63, 41, 85, 0.5),  rgba(40, 87, 144, 0.46));
+    border-radius: 10px;
+    width: auto;
+    max-width: 65%;
+    padding: 20px;
+    margin: 20px ;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+/*consider heading styling*/
+.consider h2{
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    font-weight: bold;
+    font-style:italic;
+    font-size: 27px;
+    text-decoration: underline;
+}
+
+/*consider paragraph styling*/
+.consider p{
+    color: #ffffff;
+    font-size: 17px;
+    width: 90%;
+    margin-left: 20px;
+    letter-spacing: 1.5px;
+    color: #fff;
+    
+}
+
+/*styling about us section*/
+.aboutus{
+    width: auto;
+    padding: 30px;
+    padding-left: 14px;
+    margin: 10px ;
+    color: #fbf9f9;
+    position: relative;
+    overflow: hidden;
+    top: -545px;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+/*styling for about us section heading*/
+.aboutus h2{
+    margin-left: 400px;
+    margin-bottom: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-style:italic;
+    font-size: 30px;
+    text-decoration: underline;
+    margin-top: -750px;
+    color: #fff;
+    
+}
+
+/*styling for about us section paragraph*/
+.aboutus p{
+    color: #ffffff;
+    font-size: 18px;
+    width: 65%;
+    margin-left: 20px;
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+    margin-bottom: -5px;
+    
+}
+
+/*styling for services section*/
+.services{
+    padding: 15px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+
+}
+
+/*styling for services section heading*/
+.services h2{
+    margin-bottom: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-style:italic;
+    font-size: 50px;
+    text-decoration: underline;
+    margin-top: -510px;
+    padding-left: 580px;
+}
+
+/*styling for the list inside services section*/
+.services ul{
+    list-style-type: decimal;
+    padding-left: 2px;
+    margin-top: 130px;
+}
+
+/*styling for the list items inside services section*/
+.services li{
+    margin-bottom: -650px;
+    font-size: 17px;
+}
+
+/*styling for links inside services section*/
+.services a{
+    text-decoration: none;
+    color: #090909;
+
+}
+
+/*hover effect for lunks inside service section*/
+.services a:hover{
+    color: #9f26bd;
+}
+
+/*styling for the contact us section*/
+.contactus{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    
+    
+}
+
+/*styling for the second image container*/
+img2{
+    position: relative;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+img2 img{
+    width: 1%;
+    height: 1%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/*styling for the contact us section heading*/
+.contactus h2{
+    font-size: 25px;
+    color: #fffefe;
+    margin-bottom: 5px;
+    margin-top: -700px;
+    padding-left: 600px;
+    text-decoration: underline;
+}
+
+/*styling for the contact us section paragraph*/
+.contactus p{
+    font-size: 19px;
+    line-height: 1.5;
+    color: #ffffff;
+    padding-left: 600px;
+}
+
+/*styling for the contact us section subheading*/
+.contactus h3{
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    margin-top: -165px;
+    margin-bottom: -10px;
+}
+
+/*styling for strong elements inside contact us section*/
+.contactus strong{
+    font-weight: bold;
+}
+
+.para1 p{
+    text-align: left;
+    padding: 18px;
+    font-size: 50px;
+    opacity: 0;
+    animation: fadeInText 3s ease forwards;
+}
+
+/*keyframes for fading in text*/
+@keyframes fadeInText{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+/*styling for info section heading*/
+.info h3{
+    text-align: right;
+    margin-right: 600px;
+    text-decoration: underline;
+
+}
+
+/*styling for links inside the info section heading*/
+.info a{
+    color: #fff;
+    cursor: pointer;
+}
+
+/*styling for paragraph inside the info section heading*/
+.info p{
+    margin-top: 30px;
+
+}
+
+/*styling for the third image container*/
+.img3{
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.img3 img{
+    width: 440px;
+    height: 400px;
+    margin-top: 100px;
+}
+
+/*styling for the fourth image container*/
+.img4{
+    text-align: left ;
+    margin-left: -120px;
+}
+
+.img4 img{
+    width: 990px;
+    height: 700px;
+    margin: 100px;
+}
+
+/*styling for the fifth image container*/
+.img5{
+    text-align: left;
+    margin-top: -120px;
+    margin-bottom: 40px;
+
+}
+
+.img5 img{
+    width: 250px;
+    height: 320px;
+}
+
+/*styling for the sixth image container*/
+.img6{
+    text-align: left;
+    margin-left: 290px;
+    margin-top:-360px;
+    margin-bottom: 150px;
+}
+
+.img6 img{
+    width: 250px;
+    height: 320px;
+}
+
+/*styling for the seventh image container*/
+.img7{
+    text-align: left;
+    margin-left: 590px;
+    margin-top:-470px;
+    margin-bottom: 400px;
+}
+
+.img7 img{
+    width: 250px;
+    height: 320px;
+}
+
+/*styling for the eighth image container*/
+.img8{
+    text-align: left;
+    margin-left: 880px;
+    margin-top:-725px;
+    margin-bottom: 40px;
+}
+
+.img8 img{
+    width: 250px;
+    height: 320px;
+}
+
+/*styling for the ninth image container*/
+.img9{
+    text-align: right;
+    margin-left: 910px;
+    margin-top:-364px;
+    margin-bottom: 0px;
+}
+
+.img9 img{
+    width: 250px;
+    height: 320px;
+}
+
+
