@@ -1,170 +1,1521 @@
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css"> <!--Link to  external style sheet-->
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-    <title>BetterMe ♡</title> <!--Title of the webpage-->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rahma Reyaz — UI/UX Designer & Creative Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --white:       #ffffff;
+      --bg:          #f5f0fc;
+      --bg2:         #ede5f8;
+      --bg3:         #ddd0f0;
+      --lav-1:       #9F2B68;
+      --lav-2:       #800080;
+      --lav-3:       #702963;
+      --lav-neon:    #9F2B68;
+      --lav-soft:    #ddd0f0;
+      --lav-pale:    #ede5f8;
+      --text-dark:   #1a0a2e;
+      --text-mid:    #3d1a5c;
+      --text-soft:   #7a4a9a;
+      --text-faint:  #b090c8;
+      --border:      rgba(128,0,128,0.18);
+      --border-hi:   rgba(159,43,104,0.5);
+      --shadow:      rgba(112,41,99,0.1);
+      --fh: 'Gilda Display', serif;
+      --fb: 'Nunito', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text-dark);
+      font-family: var(--fb);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Global soft radial bg washes */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 60% at -5% 15%,  rgba(128,0,128,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 55% at 108% 85%, rgba(112,41,99,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 45% at 90%  2%,  rgba(159,43,104,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 10% 98%,  rgba(128,0,128,0.07) 0%, transparent 55%);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 5rem;
+      background: rgba(245,240,252,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--fh); font-size: 1.5rem; color: var(--lav-3); letter-spacing: 0.02em; transition: color 0.3s; }
+    .nav-logo:hover { color: var(--lav-2); }
+    .nav-links { display: flex; gap: 0.4rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-soft); text-decoration: none; font-weight: 400;
+      padding: 0.42rem 1rem; border-radius: 50px; border: 1px solid transparent;
+      transition: color 0.25s, background 0.25s, border-color 0.25s, transform 0.2s;
+      display: inline-block;
+    }
+    .nav-links a:hover { color: var(--lav-2); background: rgba(128,0,128,0.07); border-color: rgba(128,0,128,0.18); transform: translateY(-1px); }
+    .nav-links a.active { color: var(--lav-2); background: rgba(159,43,104,0.1); border-color: rgba(159,43,104,0.3); }
+/* ══ HERO ══ */
+#hero {
+  min-height: 100vh; padding: 0 5rem; padding-top: 90px;
+  display: flex; align-items: center;
+  position: relative; z-index: 1; overflow: hidden;
+}
+.hero-shapes { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.hs-blob { position: absolute; border-radius: 50%; filter: blur(50px); }
+.hs-1 { top: -150px; right: -150px; width: 580px; height: 580px; background: radial-gradient(circle, rgba(128,0,128,0.13) 0%, transparent 70%); }
+.hs-2 { bottom: -90px; left: -90px;  width: 420px; height: 420px; background: radial-gradient(circle, rgba(112,41,99,0.11) 0%, transparent 70%); }
+.hs-3 { top: 35%; right: 8%;         width: 200px; height: 200px; background: radial-gradient(circle, rgba(159,43,104,0.10) 0%, transparent 70%); filter: blur(32px); }
+/* translucent pill & square shapes */
+.hs-pill { position: absolute; top: 22%; left: 40%; width: 200px; height: 68px; border-radius: 50px; background: rgba(112,41,99,0.10); filter: blur(12px); transform: rotate(-18deg); }
+.hs-sq   { position: absolute; bottom: 16%; right: 22%; width: 150px; height: 150px; border-radius: 32px; background: rgba(128,0,128,0.08); filter: blur(12px); transform: rotate(14deg); }
+/* ring outlines */
+.hs-ring { position: absolute; border-radius: 50%; border: 2px solid rgba(128,0,128,0.18); }
+.hr-1 { top: -80px;  right: -80px; width: 420px; height: 420px; }
+.hr-2 { bottom: 60px; left: -60px; width: 300px; height: 300px; border-color: rgba(159,43,104,0.15); }
+.hr-3 { top: 30%; right: 4%;       width: 160px; height: 160px; border-color: rgba(112,41,99,0.15); }
+/* extra mid rings in hero */
+.hr-4 { top: 10%; left: 2%;        width: 240px; height: 240px; border-color: rgba(128,0,128,0.12); }
+.hr-5 { bottom: 5%; right: 10%;    width: 100px; height: 100px; border-color: rgba(159,43,104,0.16); }
+
+.hero-inner { display: flex; flex-direction: row; align-items: center; gap: 7rem; max-width: 1180px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+
+/* Photo */
+.photo-col { flex-shrink: 0; position: relative; }
+.photo-col::before {
+  content: ''; position: absolute; inset: -28px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(159,43,104,0.22) 0%, transparent 70%);
+  z-index: 0; animation: pulse 4s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.06);opacity:0.7;} }
+.photo-ring {
+  width: 300px; height: 300px; border-radius: 50%; padding: 4px;
+  background: linear-gradient(145deg, var(--lav-neon), var(--lav-2), var(--lav-3), var(--lav-neon));
+  background-size: 300% 300%; animation: gradmove 6s ease infinite;
+  box-shadow: 0 16px 50px rgba(128,0,128,0.28), 0 0 30px rgba(159,43,104,0.18);
+  position: relative; z-index: 1;
+}
+@keyframes gradmove { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+.photo-inner { width:100%; height:100%; border-radius:50%; background:var(--white); padding:10px; }
+.photo-img {
+  width:100%; height:100%; border-radius:50%;
+  background: linear-gradient(145deg, var(--lav-soft), var(--bg3));
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--fh); font-size:0.9rem; color:var(--text-soft); text-align:center; 
+  overflow: hidden; /* This is key for cropping */
+  position: relative;
+}
+
+/* Add your photo here - UPDATED FOR PORTRAIT */
+.photo-img {
+  /* ADD YOUR PHOTO */
+  background-image: url('rahma.png');
+  background-size: cover; /* This will cover the circle area */
+  background-position: center 50%; /* Move focus up for face (adjust this value) */
+  background-repeat: no-repeat;
+  /* Remove any text content inside if you have it */
+  color: transparent;
+}
+
+/* Alternative if background-image doesn't work well with portrait */
+.photo-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This ensures the image covers the circle */
+  object-position: center 50%; /* Adjust this to show your face (20% from top) */
+  border-radius: 50%;
+  display: block;
+}
+
+/* If you want to use an img tag instead of background-image */
+.photo-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%; /* Adjust this value to show your face */
+  border-radius: 50%;
+}
+
+.photo-badge {
+  position:absolute; bottom:6px; left:50%; transform:translateX(-50%);
+  background:var(--white); border:1px solid var(--border-hi);
+  color:var(--lav-neon); font-family:var(--fb);
+  font-size:0.66rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+  padding:0.38rem 1.1rem; border-radius:50px; white-space:nowrap;
+  box-shadow:0 4px 16px rgba(159,43,104,0.26); z-index:2;
+}
+    /* Text */
+    .text-col { flex:1; }
+    .eyebrow { display:inline-flex; align-items:center; gap:0.6rem; font-size:0.76rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--lav-2); margin-bottom:1rem; opacity:0; animation:rise 0.6s 0.2s forwards; }
+    .eyebrow::before { content:''; display:inline-block; width:28px; height:1.5px; background:var(--lav-2); border-radius:2px; }
+    .hero-name { font-family:var(--fh); font-size:clamp(3.2rem,5.5vw,5.4rem); line-height:1.05; color:var(--text-dark); margin-bottom:0.7rem; opacity:0; animation:rise 0.6s 0.35s forwards; }
+    .hero-name .first { display:block; }
+    .hero-name .last { color:var(--lav-3); font-style:italic; }
+    .hero-pills { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.8rem; opacity:0; animation:rise 0.6s 0.5s forwards; }
+    .pill { padding:0.36rem 1.1rem; border-radius:50px; font-size:0.78rem; font-weight:400; letter-spacing:0.06em; border:1px solid var(--border); color:var(--text-mid); background:var(--lav-pale); transition:border-color 0.25s,background 0.25s,color 0.25s; }
+    .pill:hover { border-color:var(--lav-2); background:var(--lav-soft); color:var(--lav-3); }
+    .hero-desc { font-size:1.02rem; color:var(--text-soft); max-width:480px; line-height:2; margin-bottom:2.3rem; opacity:0; animation:rise 0.6s 0.65s forwards; }
+    .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:rise 0.6s 0.8s forwards; }
+    .btn-fill { padding:0.92rem 2.4rem; border-radius:50px; background:linear-gradient(135deg,var(--lav-neon),var(--lav-2)); color:var(--white); font-family:var(--fb); font-size:0.78rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; border:none; text-decoration:none; cursor:pointer; box-shadow:0 6px 22px rgba(128,0,128,0.3); transition:transform 0.2s,box-shadow 0.2s; }
+    .btn-fill:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(128,0,128,0.42); }
+    .btn-soft { padding:0.92rem 2.4rem; border-radius:50px; background:var(--white); color:var(--lav-3); font-family:var(--fb); font-size:0.78rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; border:1.5px solid var(--border-hi); text-decoration:none; cursor:pointer; transition:transform 0.2s,background 0.25s,border-color 0.25s; }
+    .btn-soft:hover { transform:translateY(-2px); background:var(--lav-pale); border-color:var(--lav-2); }
+    .btn-cv {
+      padding:0.92rem 2.4rem; border-radius:50px;
+      background: transparent; color: var(--lav-2);
+      font-family:var(--fb); font-size:0.78rem; font-weight:500;
+      letter-spacing:0.12em; text-transform:uppercase;
+      border: 1.5px dashed var(--lav-2); text-decoration:none; cursor:pointer;
+      transition:transform 0.2s, background 0.25s, color 0.25s;
+    }
+    .btn-cv:hover { transform:translateY(-2px); background:var(--lav-2); color:var(--white); }
+    @keyframes rise { from{opacity:0;transform:translateY(18px);} to{opacity:1;transform:translateY(0);} }
+
+    /* ══ SECTIONS ══ */
+    section { padding:7rem 5rem; position:relative; z-index:1; overflow:hidden; }
+    .sec-head { text-align:center; margin-bottom:4.5rem; }
+    .sec-label { font-size:0.74rem; letter-spacing:0.26em; text-transform:uppercase; color:var(--lav-2); margin-bottom:0.6rem; display:block; }
+    .sec-title { font-family:var(--fh); font-size:clamp(2.2rem,3.5vw,3rem); color:var(--text-dark); }
+    .sec-title em { font-style:italic; color:var(--lav-3); }
+    .sec-rule { display:flex; align-items:center; justify-content:center; gap:0.9rem; margin-top:1rem; }
+    .sec-rule span { width:46px; height:1px; background:linear-gradient(90deg,transparent,var(--lav-1)); }
+    .sec-rule span:last-child { background:linear-gradient(90deg,var(--lav-1),transparent); }
+    .sec-rule i { width:7px; height:7px; border-radius:50%; background:var(--lav-neon); box-shadow:0 0 8px var(--lav-neon); display:inline-block; font-style:normal; }
+
+    /* Decorative ring class used in all sections */
+    .sec-ring { position:absolute; border-radius:50%; border:2px solid rgba(128,0,128,0.18); pointer-events:none; z-index:0; }
+
+    /* Section content above rings */
+    .sec-head, .about-wrap, .proj-grid, .cert-grid, .con-wrap, .stats-col { position:relative; z-index:1; }
+
+    /* ══ ABOUT ══ */
+    #about { background:var(--white); }
+    .about-wrap { display:grid; grid-template-columns:1fr 1fr; gap:4.5rem; max-width:1080px; margin:0 auto; align-items:start; }
+    .about-card { background:var(--bg); border:1px solid var(--border); border-radius:28px; padding:2.8rem; position:relative; overflow:hidden; box-shadow:0 6px 32px var(--shadow); }
+    .about-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--lav-neon),var(--lav-2),transparent); border-radius:28px 28px 0 0; }
+    .about-card::after { content:''; position:absolute; bottom:-40px; right:-40px; width:130px; height:130px; border-radius:50%; background:radial-gradient(circle,rgba(128,0,128,0.08),transparent); }
+    .about-card p { font-size:0.98rem; color:var(--text-mid); margin-bottom:1.2rem; line-height:2; }
+    .about-card p strong { color:var(--text-dark); font-weight:600; }
+    .hl { color:var(--lav-3); font-weight:500; }
+    .sk-label { font-family:var(--fh); font-size:1rem; color:var(--text-soft); margin:1.4rem 0 0.8rem; display:block; font-style:italic; }
+    .sk-row { display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .sk { padding:0.32rem 0.95rem; border-radius:50px; font-size:0.76rem; font-weight:400; letter-spacing:0.07em; border:1px solid var(--border); color:var(--text-mid); background:var(--lav-pale); transition:border-color 0.2s,color 0.2s,background 0.2s,transform 0.2s; }
+    .sk:hover { border-color:var(--lav-2); color:var(--lav-3); background:var(--lav-soft); transform:translateY(-2px); }
+    .stats-col { display:flex; flex-direction:column; gap:1.3rem; }
+    .stat-box { background:var(--bg); border:1px solid var(--border); border-radius:22px; padding:1.6rem 2rem; display:flex; align-items:center; gap:1.5rem; box-shadow:0 3px 18px var(--shadow); transition:transform 0.2s,box-shadow 0.2s,border-color 0.25s; }
+    .stat-box:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(128,0,128,0.14); border-color:var(--border-hi); }
+    .st-ico { width:54px; height:54px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; background:var(--lav-soft); border:1px solid var(--border); }
+    .st-num { font-family:var(--fh); font-size:2.4rem; line-height:1; color:var(--lav-3); }
+    .st-lbl { font-size:0.8rem; color:var(--text-faint); letter-spacing:0.1em; text-transform:uppercase; margin-top:0.15rem; }
+
+   /* ══ PROJECTS ══ */
+#projects { 
+  background: var(--bg); 
+  padding: 4rem 2rem;
+}
+
+.proj-grid { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+  gap: 2.5rem; /* Increased gap for better spacing */
+  max-width: 1200px; /* Increased max-width for wider cards */
+  margin: 0 auto; 
+  padding: 0 1rem;
+}
+
+.proj-card { 
+  background: var(--white); 
+  border: 1px solid var(--border); 
+  border-radius: 24px; 
+  overflow: hidden; 
+  box-shadow: 0 4px 24px var(--shadow); 
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; 
+  width: 100%; /* Full width within grid column */
+}
+
+.proj-card:hover { 
+  transform: translateY(-7px); 
+  box-shadow: 0 16px 44px rgba(128, 0, 128, 0.15); 
+  border-color: var(--lav-neon); 
+}
+
+.proj-thumb { 
+  width: 100%; 
+  height: auto; /* Change from fixed height */
+  aspect-ratio: 16 / 9; /* Force 16:9 aspect ratio */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  overflow: hidden; 
+  background: #000;
+}
+
+.proj-thumb video,
+.proj-thumb iframe { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; /* This will work better with aspect-ratio */
+  border: none;
+}
+
+.vid-hold { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 0.75rem; 
+  font-size: 0.74rem; 
+  letter-spacing: 0.12em; 
+  text-transform: uppercase; 
+  color: rgba(255, 255, 255, 0.8); 
+}
+
+.play-btn { 
+  width: 60px; /* Slightly larger play button */
+  height: 64px; 
+  border-radius: 50%; 
+  background: rgba(255, 255, 255, 0.22); 
+  border: 1.5px solid rgba(255, 255, 255, 0.5); 
+  backdrop-filter: blur(6px); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  transition: background 0.25s, transform 0.2s; 
+}
+
+.play-btn:hover { 
+  background: rgba(255, 255, 255, 0.38); 
+  transform: scale(1.08); 
+}
+
+.play-btn svg { 
+  width: 22px; /* Slightly larger icon */
+  height: 22px; 
+  fill: #fff; 
+  margin-left: 3px; 
+}
+
+.proj-body { 
+  padding: 2rem; /* Increased padding */
+}
+
+.proj-tag { 
+  display: inline-block; 
+  padding: 0.3rem 1rem; 
+  border-radius: 50px; 
+  font-size: 0.75rem; 
+  letter-spacing: 0.12em; 
+  text-transform: uppercase; 
+  background: var(--lav-pale); 
+  color: var(--lav-3); 
+  border: 1px solid var(--border); 
+  margin-bottom: 0.8rem; 
+}
+
+.proj-name { 
+  font-family: var(--fh); 
+  font-size: 1.6rem; /* Slightly larger title */
+  color: var(--text-dark); 
+  margin-bottom: 0.6rem; 
+}
+
+.proj-desc { 
+  font-size: 1rem; /* Slightly larger description */
+  color: var(--text-soft); 
+  line-height: 1.8; 
+  margin-bottom: 1rem;
+}
+
+.proj-foot { 
+  display: flex; 
+  gap: 1.5rem; 
+  margin-top: 1.5rem; 
+  padding-top: 1.2rem; 
+  border-top: 1px solid var(--bg3); 
+}
+
+.plink { 
+  font-size: 0.8rem; 
+  letter-spacing: 0.1em; 
+  text-transform: uppercase; 
+  text-decoration: none; 
+  font-weight: 500; 
+  color: var(--lav-3); 
+  border-bottom: 1px solid transparent; 
+  padding-bottom: 2px; 
+  transition: color 0.2s, border-color 0.2s; 
+}
+
+.plink:hover { 
+  color: var(--lav-2); 
+  border-bottom-color: var(--lav-2); 
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .proj-grid { 
+    grid-template-columns: 1fr; /* Stack on mobile */
+    gap: 2rem;
+  }
+  
+  .proj-thumb {
+    height: 220px;
+  }
+}
+
+    /* ══ CERTIFICATES ══ */
+    #certificates { background:var(--white); }
+    .cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; max-width:1080px; margin:0 auto; }
+    .cert-card { background:var(--bg); border:1px solid var(--border); border-radius:22px; padding:2rem; position:relative; overflow:hidden; box-shadow:0 3px 18px var(--shadow); transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s; }
+    .cert-card:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(128,0,128,0.13); border-color:var(--lav-neon); }
+    .cert-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--lav-neon),var(--lav-2),transparent); border-radius:22px 22px 0 0; }
+    .cert-glow { position:absolute; top:-20px; right:-20px; width:80px; height:80px; border-radius:50%; background:radial-gradient(circle,rgba(159,43,104,0.18),transparent); }
+    .cert-ico { width:48px; height:48px; border-radius:14px; background:var(--lav-soft); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:1.1rem; }
+    .cert-name { font-family:var(--fh); font-size:1.15rem; color:var(--text-dark); margin-bottom:0.35rem; }
+    .cert-org { font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--lav-3); margin-bottom:0.35rem; }
+    .cert-date { font-size:0.8rem; color:var(--text-faint); }
+    .certs-wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1rem 1rem 2rem;
+  position: relative;
+}
+
+/* Certificates section */
+#certificates {
+  position: relative;
+  padding-bottom: 5rem;
+}
+
+/* Header with scroll controls */
+.certs-header {
+  max-width: 1400px;
+  margin: 0 auto 2.5rem;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.scroll-controls {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.scroll-arrow {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--lav-3);
+  color: var(--lav-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 6px 20px rgba(128, 0, 128, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow effect for arrows */
+.scroll-arrow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(159, 43, 104, 0.5) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 0;
+}
+
+.scroll-arrow:hover::before {
+  opacity: 1;
+  animation: pulse-glow 1.5s infinite;
+}
+
+@keyframes pulse-glow {
+  0% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.15); }
+  100% { opacity: 0.4; transform: scale(1); }
+}
+
+.scroll-arrow svg {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s;
+}
+
+.scroll-arrow:hover:not(:disabled) svg {
+  transform: scale(1.2);
+}
+
+.scroll-arrow:hover:not(:disabled) {
+  background: var(--lav-3);
+  color: white;
+  border-color: var(--lav-3);
+  box-shadow: 0 8px 25px rgba(159, 43, 104, 0.5);
+}
+
+.scroll-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: var(--border);
+  color: var(--text-soft);
+  box-shadow: none;
+}
+
+.scroll-arrow:disabled::before {
+  display: none;
+}
+
+/* Horizontal scroll container - NO scrollbar */
+.certs-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 3rem;
+  padding: 1.5rem 2rem 4rem;
+  scroll-snap-type: x mandatory;
+  max-width: 100%;
+  margin: 0 auto;
+  
+  /* Hide scrollbar completely */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.certs-scroll::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
+/* Certificate cards - EXTRA LARGE */
+.certs-scroll .cert-card {
+  flex: 0 0 500px; /* Super wide cards */
+  scroll-snap-align: start;
+  margin-bottom: 0;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card styling */
+.cert-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  box-shadow: 0 8px 30px var(--shadow);
+}
+
+/* Card glow effect */
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(159, 43, 104, 0.25) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cert-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--lav-neon);
+  box-shadow: 0 25px 50px rgba(159, 43, 104, 0.35);
+}
+
+.cert-card:hover::before {
+  opacity: 1;
+  animation: card-glow 2s infinite;
+}
+
+@keyframes card-glow {
+  0% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.08); }
+  100% { opacity: 0.25; transform: scale(1); }
+}
+
+.cert-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(159, 43, 104, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cert-card:hover .cert-glow {
+  opacity: 1;
+}
+
+/* Certificate image - LARGE LANDSCAPE */
+.cert-img {
+  width: 100%;
+  height: 300px; /* Much taller for big certificates */
+  margin: 0 auto 2rem;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  background: var(--lav-pale);
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s;
+}
+
+.cert-card:hover .cert-img {
+  border-color: var(--lav-3);
+  box-shadow: 0 18px 40px rgba(159, 43, 104, 0.3);
+}
+
+.cert-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Change to 'contain' if text gets cut */
+  object-position: center;
+  transition: transform 0.5s;
+}
+
+.cert-card:hover .cert-img img {
+  transform: scale(1.08);
+}
+
+/* Text styling - LARGER FONTS */
+.cert-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  font-family: var(--fh);
+  position: relative;
+  z-index: 2;
+}
+
+.cert-org {
+  font-size: 1.15rem;
+  color: var(--lav-3);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+
+.cert-date {
+  font-size: 1rem;
+  color: var(--text-soft);
+  font-style: italic;
+  position: relative;
+  z-index: 2;
+}
+
+/* Certificate image - ADAPTIVE FOR PORTRAIT */
+.cert-img {
+  width: 100%;
+  height: 300px; /* Fixed height */
+  margin: 0 auto 2rem;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  background: var(--lav-pale);
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* For portrait certificates - CONTAIN mode shows full image */
+.cert-img.portrait img {
+  object-fit: contain; /* Shows entire certificate */
+  background: #f5f0ff; /* Light purple background for empty space */
+}
+
+/* For landscape certificates - COVER mode fills the space */
+.cert-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Default for landscape */
+  object-position: center;
+  transition: transform 0.5s;
+}
+
+/* Optional: Add a subtle pattern in the background for portrait mode */
+.cert-img.portrait {
+  background: linear-gradient(135deg, #f5f0ff 0%, #e9d9ff 100%);
+}
+
+.cert-card:hover .cert-img img {
+  transform: scale(1.08);
+}
+
+/* If you want ALL certificates to show fully (both portrait and landscape) */
+.cert-img.all-contain img {
+  object-fit: contain;
+  background: #f5f0ff;
+}
+
+/* Alternative: Auto-detect based on image (requires JavaScript) */
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .certs-scroll .cert-card {
+    flex: 0 0 450px;
+  }
+  
+  .cert-img {
+    height: 270px;
+  }
+}
+
+@media (max-width: 992px) {
+  .certs-scroll .cert-card {
+    flex: 0 0 400px;
+  }
+  
+  .cert-img {
+    height: 240px;
+  }
+  
+  .cert-name {
+    font-size: 1.35rem;
+  }
+  
+  .cert-org {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .certs-scroll .cert-card {
+    flex: 0 0 350px;
+  }
+  
+  .cert-img {
+    height: 210px;
+  }
+  
+  .certs-header {
+    padding: 0 1.5rem;
+  }
+  
+  .scroll-arrow {
+    width: 52px;
+    height: 52px;
+  }
+  
+  .scroll-arrow svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .certs-header {
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .certs-scroll {
+    padding: 1rem 1rem 3rem;
+    gap: 2rem;
+  }
+  
+  .certs-scroll .cert-card {
+    flex: 0 0 300px;
+  }
+  
+  .cert-img {
+    height: 180px;
+  }
+  
+  .cert-name {
+    font-size: 1.2rem;
+  }
+  
+  .cert-org {
+    font-size: 1rem;
+  }
+  
+  .cert-date {
+    font-size: 0.9rem;
+  }
+}
+
+    /* ══ CONTACT ══ */
+    #contact { background:var(--bg); }
+    .con-wrap { max-width:760px; margin:0 auto; text-align:center; }
+    .con-sub { font-size:1rem; color:var(--text-soft); line-height:2; margin-bottom:3rem; }
+    .con-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-bottom:2.5rem; }
+    .con-card { background:var(--white); border:1px solid var(--border); border-radius:24px; padding:2.4rem 1.5rem; position:relative; overflow:hidden; box-shadow:0 4px 24px var(--shadow); text-decoration:none; display:flex; flex-direction:column; align-items:center; gap:1rem; transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s; }
+    .con-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--lav-neon),var(--lav-2),transparent); border-radius:24px 24px 0 0; }
+    .con-card::after { content:''; position:absolute; bottom:-30px; right:-30px; width:100px; height:100px; border-radius:50%; background:radial-gradient(circle,rgba(128,0,128,0.06),transparent); }
+    .con-card:hover { transform:translateY(-7px); box-shadow:0 16px 44px rgba(128,0,128,0.16); border-color:var(--lav-neon); }
+    .con-icon { width:60px; height:60px; border-radius:18px; background:linear-gradient(135deg,var(--lav-neon),var(--lav-2)); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(128,0,128,0.3); }
+    .con-icon svg { width:24px; height:24px; stroke:#fff; fill:none; stroke-width:1.8; }
+    .con-label { font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-faint); font-weight:500; }
+    .con-value { font-family:var(--fh); font-size:1.05rem; color:var(--text-dark); word-break:break-all; text-align:center; }
+    .con-value small { font-family:var(--fb); font-size:0.84rem; color:var(--text-soft); font-style:normal; display:block; }
+    .soc-row { display:flex; justify-content:center; gap:0.9rem; margin-top:0.5rem; }
+    .soc { width:48px; height:48px; border-radius:14px; border:1px solid var(--border); background:var(--white); display:flex; align-items:center; justify-content:center; color:var(--text-soft); text-decoration:none; transition:transform 0.2s,border-color 0.25s,color 0.25s,box-shadow 0.2s; }
+    .soc:hover { transform:translateY(-3px); border-color:var(--lav-neon); color:var(--lav-neon); box-shadow:0 4px 14px rgba(159,43,104,0.2); }
+    .soc svg { width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:1.5; }
+
+
+    /* ══ SERVICES ══ */
+    #services { background: var(--bg); }
+    .srv-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.6rem; max-width:1100px; margin:0 auto; }
+    .srv-card {
+      background:var(--white); border:1px solid var(--border); border-radius:24px;
+      padding:2.2rem; position:relative; overflow:hidden;
+      box-shadow:0 4px 24px var(--shadow);
+      transition:transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .srv-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--lav-neon),var(--lav-2),transparent); border-radius:24px 24px 0 0; }
+    .srv-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(128,0,128,0.14); border-color:var(--lav-neon); }
+    .srv-ico {
+      width:56px; height:56px; border-radius:18px; margin-bottom:1.4rem;
+      background:linear-gradient(135deg,rgba(159,43,104,0.15),rgba(128,0,128,0.1));
+      border:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center; font-size:1.5rem;
+    }
+    .srv-name { font-family:var(--fh); font-size:1.25rem; color:var(--text-dark); margin-bottom:0.6rem; }
+    .srv-desc { font-size:0.92rem; color:var(--text-soft); line-height:1.9; margin-bottom:1.2rem; }
+    .srv-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
+    .srv-tag { font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.22rem 0.75rem; border-radius:50px; background:var(--lav-pale); color:var(--lav-3); border:1px solid var(--border); }
+
+    /* ══ FOOTER ══ */
+    footer { padding:1.7rem 5rem; background:var(--white); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; position:relative; z-index:1; }
+    .foot-logo { font-family:var(--fh); font-size:1.2rem; color:var(--lav-3); }
+    .foot-copy { font-size:0.76rem; letter-spacing:0.08em; color:var(--text-faint); }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s,transform 0.6s; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* MOBILE */
+    @media (max-width:860px) {
+      nav { padding:1rem 1.5rem; }
+      .nav-links { display:none; }
+      #hero { padding:5.5rem 1.5rem 3rem; }
+      .hero-inner { flex-direction:column; text-align:center; gap:2.5rem; }
+      .photo-ring { width:220px; height:220px; }
+      .hero-desc { margin:0 auto 1.8rem; }
+      .hero-btns { justify-content:center; }
+      section { padding:5rem 1.5rem; }
+      .about-wrap { grid-template-columns:1fr; gap:2rem; }
+      .con-cards { grid-template-columns:1fr; }
+      footer { flex-direction:column; gap:0.5rem; text-align:center; padding:1.4rem; }
+    }
+/* Floating star sparkles - Light & Dark Purple */
+.floating-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star-sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  animation: floatStar 8s infinite linear;
+  opacity: 0;
+}
+
+/* Light purple sparkles */
+.star-sparkle.light {
+  background: #e6b3ff;  /* Light purple */
+  box-shadow: 0 0 15px #e6b3ff, 0 0 30px #d9a3ff;
+}
+
+/* Dark purple sparkles */
+.star-sparkle.dark {
+  background: #4b0082;  /* Dark purple */
+  box-shadow: 0 0 15px #800080, 0 0 30px #4b0082;
+}
+
+/* Medium purple option (optional) */
+.star-sparkle.medium {
+  background: #9b30ff;
+  box-shadow: 0 0 15px #9b30ff, 0 0 30px #8a2be2;
+}
+
+@keyframes floatStar {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100px) translateX(50px) rotate(180deg);
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-200px) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Different sizes */
+.star-sparkle.small {
+  width: 2px;
+  height: 2px;
+}
+
+.star-sparkle.medium-size {
+  width: 5px;
+  height: 5px;
+}
+
+.star-sparkle.large {
+  width: 7px;
+  height: 7px;
+}
+
+/* Different speeds */
+.star-sparkle.slow {
+  animation: floatStar 12s infinite linear;
+}
+
+.star-sparkle.fast {
+  animation: floatStar 5s infinite linear;
+}
+
+/* Different directions */
+.star-sparkle.right {
+  animation: floatStarRight 8s infinite linear;
+}
+
+@keyframes floatStarRight {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-80px) translateX(-50px) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-180px) translateX(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.star-sparkle.diagonal {
+  animation: floatStarDiagonal 10s infinite linear;
+}
+
+@keyframes floatStarDiagonal {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-120px) translateX(80px) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-220px) translateX(150px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Twinkling effect */
+.star-sparkle.twinkle {
+  animation: floatStar 8s infinite linear, twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+    
+  </style>
 </head>
 <body>
-    <header>
-        <div class="flex"> <!--Defines a lfex container-->
-            <div class="navbar"> <!--defines a navigation bar-->
-                <div class="icon"><!--Container for the logo-->
-                    <h2 class="logo">BetterMe ♡</h2> <!--displays the logo text-->
-                </div>
-                
-                
-                <div class="menu"> <!--Container for the navigation menu--> 
-                    <ul> <!--unordered list for the menu items-->
-                        <li><a href= "#home"> Home </a></li> <!--menu item linking to the home section-->
-                        <li><a href= "#aboutus"> About Us </a></li> <!---menu item linking to the about us section-->
-                        <li><a href= "#services"> Services </a></li> <!---menu item linking to the services section-->
-                        <li><a href= "#contactus"> Contact Us</a></li> <!---menu item linking to the contact us section-->
-                    </ul>
-                </div>
 
-                <div class="search"> <!--container for search bar-->
-                    <input type="text" placeholder="Search..."> <!--input field for search-->
-                    <button class="search-btn"><ion-icon name="search-outline"></ion-icon> </button> <!--search button with an icon-->
-                </div>
-        </header>
-            
-            <div class="img1"> <!--container for the image--> 
-                <img src="images/back.jpg" alt="">
-                <div class="para"> <!--container for the paragraph overlay on the image-->
-                    <p> <b>Small steps can lead to big process, Build a better version of yourself here.</b></p>
-                </div>
-            </div>
-            
-            <div class="form"> <!--container for the login form-->
-                <h2>Login here</h2><br> <!--heading for the login form-->
-                <input type="email" name="email" placeholder="Enter email here"> <!--email input field-->
-                <input type="password" name="" placeholder="Enter password here"> <!--password input field-->
-                <button class="btnn"><a href="#"> Login</a> </button> <!--login button-->
-                
-                <p class="link">Don't have an account<br>
-                    <a href="#">Sign up here </a></p> <!--link to sign up if the user does not have an account-->
-            </div>
-            
-            <div class="note"> <!--container for the note section-->
-                <h2>Why is therapy important for Mental Health ?</h2><br> <!--heading for the note section-->
-                <p>Therapy is really important for mental health. It helps because you can talk about your feelings and problems in a safe place.<br>
-                <br>The therapist listens and does not judge you.They can help you understand why you feel the way you do and how to cope with 
-                difficult emotions better.<br> 
-                <br>Therapy can also teach you new skills to handle stress and improve how you communicate with others.
-                It can also make your relationship with others better.<br> 
-                <br>Overall, therapy gives you tools to feel better about yourself and make positive changes.<br> </p> 
-            </div>
-            
-            <div class="consider"><!--container for the consideration section-->
-                <br> <h2> When to consult a therapist ?</h2><br> <!--heading for the consideration section-->
-                <p>You should consider consulting a therapist if you're feeling sad, anxious, or angry often.<br>
-                    Therapy can also help if you're having
-                    trouble dealing with stress from work or relationship, going through big changes in life, or having ongoing problems in your
-                    relationship. <br>
-                    <br>If you notice changes in your behavior like being more irritable, withdrawing from others, or doing 
-                    things that aren't good for you, therapy can be helpful.<br>
-                    <br> It's also a good idea to consider therapy if you've been through a 
-                    tough experience that's still bothering you, or if you've any physical problems like headaches or trouble sleeping that 
-                    might be related to how you feel inside.<br>
-                    </p>
-            </div>
+<div class="floating-stars">
+  <!-- LIGHT PURPLE STARS -->
+  <!-- Row 1 - Light purple -->
+  <div class="star-sparkle light" style="top: 5%; left: 8%;"></div>
+  <div class="star-sparkle light medium-size slow" style="top: 12%; left: 22%; animation-delay: 1.2s;"></div>
+  <div class="star-sparkle light small fast" style="top: 18%; left: 35%; animation-delay: 2.4s;"></div>
+  <div class="star-sparkle light large" style="top: 25%; left: 48%; animation-delay: 0.8s;"></div>
+  <div class="star-sparkle light medium-size right" style="top: 32%; left: 62%; animation-delay: 1.8s;"></div>
+  <div class="star-sparkle light small diagonal" style="top: 38%; left: 75%; animation-delay: 2.9s;"></div>
+  <div class="star-sparkle light" style="top: 45%; left: 88%; animation-delay: 0.4s;"></div>
+  <div class="star-sparkle light medium-size twinkle" style="top: 52%; left: 12%; animation-delay: 1.5s;"></div>
+  <div class="star-sparkle light small" style="top: 58%; left: 25%; animation-delay: 2.2s;"></div>
+  <div class="star-sparkle light large slow" style="top: 65%; left: 40%; animation-delay: 3.1s;"></div>
+  <div class="star-sparkle light medium-size" style="top: 72%; left: 55%; animation-delay: 0.9s;"></div>
+  <div class="star-sparkle light small fast" style="top: 78%; left: 68%; animation-delay: 1.9s;"></div>
+  <div class="star-sparkle light" style="top: 85%; left: 82%; animation-delay: 2.7s;"></div>
+  <div class="star-sparkle light medium-size diagonal" style="top: 92%; left: 95%; animation-delay: 0.2s;"></div>
+  
+  <!-- DARK PURPLE STARS -->
+  <!-- Row 2 - Dark purple -->
+  <div class="star-sparkle dark" style="top: 8%; left: 15%; animation-delay: 0.5s;"></div>
+  <div class="star-sparkle dark medium-size" style="top: 15%; left: 28%; animation-delay: 1.7s;"></div>
+  <div class="star-sparkle dark small diagonal" style="top: 22%; left: 42%; animation-delay: 2.8s;"></div>
+  <div class="star-sparkle dark large slow" style="top: 28%; left: 58%; animation-delay: 0.3s;"></div>
+  <div class="star-sparkle dark medium-size right" style="top: 35%; left: 72%; animation-delay: 1.3s;"></div>
+  <div class="star-sparkle dark small" style="top: 42%; left: 85%; animation-delay: 2.5s;"></div>
+  <div class="star-sparkle dark" style="top: 48%; left: 18%; animation-delay: 0.7s;"></div>
+  <div class="star-sparkle dark medium-size fast" style="top: 55%; left: 32%; animation-delay: 1.9s;"></div>
+  <div class="star-sparkle dark large" style="top: 62%; left: 45%; animation-delay: 2.1s;"></div>
+  <div class="star-sparkle dark small twinkle" style="top: 68%; left: 60%; animation-delay: 0.1s;"></div>
+  <div class="star-sparkle dark medium-size" style="top: 75%; left: 75%; animation-delay: 1.1s;"></div>
+  <div class="star-sparkle dark" style="top: 82%; left: 88%; animation-delay: 2.3s;"></div>
+  <div class="star-sparkle dark small slow" style="top: 88%; left: 10%; animation-delay: 3.2s;"></div>
+  <div class="star-sparkle dark medium-size diagonal" style="top: 95%; left: 24%; animation-delay: 0.6s;"></div>
+  
+  <!-- EXTRA STARS FOR DENSITY -->
+  <!-- More light purple -->
+  <div class="star-sparkle light small" style="top: 10%; left: 50%; animation-delay: 2.6s;"></div>
+  <div class="star-sparkle light medium-size" style="top: 20%; left: 65%; animation-delay: 1.4s;"></div>
+  <div class="star-sparkle light" style="top: 30%; left: 80%; animation-delay: 3.3s;"></div>
+  <div class="star-sparkle light small fast" style="top: 40%; left: 95%; animation-delay: 0.8s;"></div>
+  <div class="star-sparkle light large diagonal" style="top: 50%; left: 5%; animation-delay: 1.6s;"></div>
+  <div class="star-sparkle light medium-size twinkle" style="top: 60%; left: 20%; animation-delay: 2.9s;"></div>
+  
+  <!-- More dark purple -->
+  <div class="star-sparkle dark small" style="top: 14%; left: 36%; animation-delay: 3.0s;"></div>
+  <div class="star-sparkle dark medium-size" style="top: 24%; left: 52%; animation-delay: 0.9s;"></div>
+  <div class="star-sparkle dark" style="top: 34%; left: 70%; animation-delay: 2.0s;"></div>
+  <div class="star-sparkle dark large slow" style="top: 44%; left: 90%; animation-delay: 1.2s;"></div>
+  <div class="star-sparkle dark small right" style="top: 54%; left: 8%; animation-delay: 2.4s;"></div>
+  <div class="star-sparkle dark medium-size fast" style="top: 64%; left: 30%; animation-delay: 0.4s;"></div>
+  <div class="star-sparkle dark" style="top: 74%; left: 48%; animation-delay: 1.8s;"></div>
+  <div class="star-sparkle dark small diagonal" style="top: 84%; left: 72%; animation-delay: 3.4s;"></div>
+</div>
+  
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Rahma.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-            <div class="img3"> <!--container for the image-->
-                <img src="images/back3.png" alt="">
-            </div>
-
-                <div class="aboutus" id="aboutus"> <!--container for the about us section with an ID for navigation-->
-                    <div class="img4"> <!--container for the image-->
-                        <img src="images/back5.jpeg" alt="">
-                    </div>
-                    <h2>About us</h2><br> <!--heading for the about us section-->
-                    <p>Welcome to BetterMe, a place where your mental health
-                    and wellbeing are our top priorities. At BetterMe, we value
-                    easily available, caring, support as well as the transformational potential of therapy.<br>
-                    <br>Our goal is to simply create a secure and encouraging enviroment for 
-                    people to start their journey towards recovery and personal development.
-                    We are here to support and guide you.<br>
-                    <br>What sets us apart at BetterMe is our commitment to personalized care.
-                    We deal with different types of therapy.<br>
-                    <br>Join us at BetterMe and take the first step towards a healthier, 
-                    happier you. Together, let's work towards a better tomorrow. <br></p>
-            </div>
-            
-            <div class="services" id="services">  <!--container for the services section with an ID for navigation-->
-                <h2>Services</h2> <!--heading for the services section-->
-                <ul> <!--unordered list-->
-                    <li><a href= "motivationalTherapy.html"> Motivational Therapy </a></li>
-                    <li><a href= "traumaTherapy.html"> Trauma Therapy </a></li>
-                    <li><a href= "interpersonalTherapy.html"> Interpersonal Therapy</a></li>
-                    <li><a href= "solutionfocusedTherapy.html"> Solution-focused Therapy </a></li>
-                    <li><a href= "humanisticTherapy.html"> Humanistic Therapy</a></li>
-                </ul><br>
-
-                <div class="img5"> <!--container for the image-->
-                    <img src="images/back6.jpg" alt="">
-                </div>
-
-                <div class="img6">  <!--container for the image-->
-                    <img src="images/back7.jpg" alt="">
-                </div>
-
-                <div class="img7">  <!--container for the image-->
-                    <img src="images/back8.jpg" alt="">
-                </div>
-
-                <div class="img8">  <!--container for the image-->
-                    <img src="images/back9.jpg" alt="">
-                </div>
-
-                <div class="img9">  <!--container for the image-->
-                    <img src="images/back11.png" alt="">
-                </div>
-
-              
-            </div>
-            
-            <div class="contactus" id="contactus">  <!--container for the contact us section with an ID for navigation-->
-                <div class="img2">  <!--container for the image-->
-                    <img src="images/back1.jpg" alt="">
-                </div>
-
-                <h2>Contact Us</h2><br> <!--heading-->
-                <p> We'd love to hear from you! Please reach us using the contact information
-                    provided below.<br>
-                </p>
-
-                <div class="para1"> <!--container for additional paragraph-->
-                    <p> THE BEST WAY<br> OUT IS<br> ALWAYS THROUGH</p>
-
-                </div>
-
-                <div class="info"> <!--container for the contact information-->
-                    <br><h3>Contact information </h3><br> <!--heading-->
-                    <p><strong> Email:</strong> <a href="mailto:contact@BetterMe.com">contact@BetterMe.com</a></p> <!--email contact information with mailto link-->
-                    <p><strong> Phone number:</strong> +098 7618 2849</p> <!--pone contact information-->
-                    <p><strong> Adress:</strong> 456 Buston Street, City, State, ZIP Code</p> <!--address information-->
-                    <p><strong>Business Hours:</strong> Monday - Friday: 9:00 AM - 8:00 PM</p> <!--business hour information-->
-                </div>
-                
-
-
-                <center><div class="icons"><br> <!--container for social media icoms, centered-->
-                    <h3> Follow us on</h3><br> <!--sub-heading for social media links-->
-                    <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-whatsapp"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-google"></ion-icon></a></center>
-                </div>
-
-            </div>
-        
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-shapes">
+    <div class="hs-blob hs-1"></div>
+    <div class="hs-blob hs-2"></div>
+    <div class="hs-blob hs-3"></div>
+    <div class="hs-pill"></div>
+    <div class="hs-sq"></div>
+    <div class="hs-ring hr-1"></div>
+    <div class="hs-ring hr-2"></div>
+    <div class="hs-ring hr-3"></div>
+    <div class="hs-ring hr-4"></div>
+    <div class="hs-ring hr-5"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="photo-col">
+      <div class="photo-ring">
+        <div class="photo-inner">
+          <div class="photo-img"><img src="rahma.png" alt=""></div>
         </div>
+      </div>
+      <div class="photo-badge">UI/UX · Web · Creative</div>
     </div>
-</div>
-</div>
-   
+    <div class="text-col">
+      <p class="eyebrow">Portfolio</p>
+      <h1 class="hero-name">
+        <span class="first">Rahma</span>
+        <span class="last">Reyaz</span>
+      </h1>
+      <div class="hero-pills">
+        <span class="pill">UI/UX Designer</span>
+        <span class="pill">Web Developer</span>
+        <span class="pill">Creative Developer</span>
+        <span class="pill">App Designer</span>
+      </div>
+      <p class="hero-desc">I design and build digital experiences that are intuitive, beautiful, and meaningful — bridging the gap between design and code, one thoughtful interaction at a time.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-fill">View My Work</a>
+        <a href="#contact" class="btn-soft">Let's Connect</a>
+        <a href="resume.pdf" download class="btn-cv">Download CV ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-ring" style="width:520px;height:520px;top:-220px;right:-220px;"></div>
+  <div class="sec-ring" style="width:320px;height:320px;bottom:-130px;left:-130px;border-color:rgba(159,43,104,0.15);"></div>
+  <div class="sec-ring" style="width:200px;height:200px;top:38%;left:3%;border-color:rgba(112,41,99,0.16);"></div>
+  <div class="sec-ring" style="width:110px;height:110px;top:62%;right:5%;border-color:rgba(128,0,128,0.15);"></div>
+  <div class="sec-head reveal">
+    <span class="sec-label">Get to know me</span>
+    <h2 class="sec-title">About <em>Me</em></h2>
+    <div class="sec-rule"><span></span><i></i><span></span></div>
+  </div>
+  <div class="about-wrap">
+    <div class="about-card reveal">
+      <p>Hi! I'm <strong>Rahma Reyaz</strong> — a UI/UX Designer and Creative Web Developer with a passion for crafting digital experiences that feel as good as they look.</p>
+      <p>My work lives at the intersection of <span class="hl">design thinking</span> and expressive code. I love the moment a wireframe becomes a real, living interface — that's where the magic happens.</p>
+      <p>Beyond screens, I'm a <span class="hl">passionate reader</span> — always in the middle of a book on design, psychology, or storytelling. Reading fuels the creativity I bring to everything I build.</p>
+      <span class="sk-label">Tools & technologies I work with:</span>
+      <div class="sk-row">
+        <span class="sk">Figma</span><span class="sk">UI/UX Design</span><span class="sk">HTML & CSS</span>
+        <span class="sk">JavaScript</span><span class="sk">Python</span><span class="sk">Prototyping</span><span class="sk">React</span>
+        <span class="sk">Responsive Design</span><span class="sk">Wireframing</span>
+        <span class="sk">User Research</span><span class="sk">Canva</span><span class="sk">GitHub</span>
+      </div>
+    </div>
+    <div class="stats-col">
+      <div class="stat-box reveal">
+        <div class="st-ico"><i class="fa-solid fa-diagram-project"></i></div>
+        <div><div class="st-num">7+</div><div class="st-lbl">Projects Completed</div></div>
+      </div>
+      <div class="stat-box reveal">
+        <div class="st-ico"><i class="fa-solid fa-certificate"></i></div>
+        <div><div class="st-num">8+</div><div class="st-lbl">Certificates Earned</div></div>
+      </div>
+      <div class="stat-box reveal">
+        <div class="st-ico"><i class="fa-solid fa-book-open"></i></div>
+        <div><div class="st-num">20+</div><div class="st-lbl">Books Read</div></div>
+      </div>
+      <div class="stat-box reveal">
+        <div class="st-ico"><i class="fa-solid fa-lightbulb"></i></div>
+        <div>
+          <div class="st-num">15+</div>
+          <div class="st-lbl">Design Concepts Created</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-ring" style="width:600px;height:600px;top:-260px;left:-260px;border-color:rgba(112,41,99,0.15);"></div>
+  <div class="sec-ring" style="width:360px;height:360px;bottom:-160px;right:-160px;border-color:rgba(159,43,104,0.15);"></div>
+  <div class="sec-ring" style="width:180px;height:180px;top:20%;right:3%;border-color:rgba(128,0,128,0.16);"></div>
+  <div class="sec-ring" style="width:105px;height:105px;bottom:20%;left:4%;border-color:rgba(112,41,99,0.15);"></div>
+  <div class="sec-head reveal">
+    <span class="sec-label">What I've built</span>
+    <h2 class="sec-title">Few Of My <em>Projects</em></h2>
+    <div class="sec-rule"><span></span><i></i><span></span></div>
+  </div>
+ 
+  <div class="proj-grid">
+    <div class="proj-card reveal">
+      <div class="proj-thumb" style="background:#000; padding:0; display:flex; align-items:center; justify-content:center;">
+        <video controls style="width:100%; max-height:100%; object-fit:contain;">
+          <source src="Walkthrough of Delux perfumes.mp4" type="video/mp4">
+        </video>
+      </div>
+ 
+      <div class="proj-body">
+        <span class="proj-tag"> Web Development</span>
+        <h3 class="proj-name">Project One</h3>
+        <p class="proj-desc">Luxury perfume e-commerce platform featuring an elegant product gallery, fragrance notes breakdown, and seamless cart experience. Built with responsive design and a sophisticated purple aesthetic.</p>
+        <div class="proj-foot"><a href="#" class="plink">HTML/CSS/JS</a><a href="#" class="plink">React + Commerce</a></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-thumb" style="background:#000; padding:0; display:flex; align-items:center; justify-content:center;">
+        <video controls style="width:100%; max-height:100%; object-fit:contain;">
+          <source src="Multi page App- Atlasia.mp4" type="video/mp4">
+        </video>
+      </div>
+  
+      <div class="proj-body">
+        <span class="proj-tag">App Developmet</span>
+        <h3 class="proj-name">Project Two</h3>
+        <p class="proj-desc">Atlasia brings travel planning to your desktop with an elegant Tkinter interface for discovering destinations and managing itineraries. Users can search for places, view details, and save their dream trips all in one place.</p>
+        <div class="proj-foot"><a href="#" class="plink">Python</a><a href="#" class="plink">Tkinter</a></div>
+      </div>
+    </div>
+  
+    <div class="proj-card reveal">
+      <div class="proj-thumb" style="background:#000; padding:0; display:flex; align-items:center; justify-content:center;">
+        <video controls style="width:100%; max-height:100%; object-fit:contain;">
+          <source src="Walkthrough video.mp4" type="video/mp4">
+        </video>
+      </div>
+  
+      <div class="proj-body">
+        <span class="proj-tag">Creative Development</span>
+        <h3 class="proj-name">Project Three</h3>
+        <p class="proj-desc">A magical Harry Potter discovery app built with Python Tkinter that lets users explore books, spells, and movies from the Wizarding World. Powered by the Harry Potter API, it brings all the magical details to your desktop with an enchanting purple interface.</p>
+        <div class="proj-foot"><a href="#" class="plink">Python</a><a href="#" class="plink">HP Api</a></div>
+      </div>
+    </div>
     
+   <div class="proj-card reveal">
+    <div class="proj-thumb" style="background:#000; padding:0; display:flex; align-items:center; justify-content:center;">
+      <video controls style="width:100%; max-height:100%; object-fit:contain;">
+        <source src="EpiReads- Walkthrough.mp4" type="video/mp4">
+      </video>
+    </div>
+  
+      <div class="proj-body">
+        <span class="proj-tag">Web Development</span>
+        <h3 class="proj-name">Project Four</h3>
+        <p class="proj-desc">Epi Reads brings book lovers together on a platform designed for discovering, discussing, and tracking books across all genres. With personalized recommendations and reading lists, it's the perfect companion for every reader's journey.</p>
+        <div class="proj-foot"><a href="#" class="plink">React/CSS3</a><a href="#" class="plink">Context API</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="sec-ring" style="width:460px;height:460px;top:-190px;left:-190px;border-color:rgba(159,43,104,0.15);"></div>
+  <div class="sec-ring" style="width:290px;height:290px;bottom:-110px;right:-110px;border-color:rgba(112,41,99,0.16);"></div>
+  <div class="sec-ring" style="width:165px;height:165px;top:30%;right:4%;border-color:rgba(128,0,128,0.15);"></div>
+  <div class="sec-ring" style="width:115px;height:115px;bottom:20%;left:3%;border-color:rgba(159,43,104,0.14);"></div>
+  
+  <div class="sec-head reveal">
+    <span class="sec-label">Credentials & Growth</span>
+    <h2 class="sec-title">My <em>Certificates</em></h2>
+    <div class="sec-rule"><span></span><i></i><span></span></div>
+  </div>
+  
+  <!-- Scroll controls on top right -->
+  <div class="certs-header">
+    <div class="scroll-controls">
+      <button class="scroll-arrow left" id="scrollLeft" disabled>
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button class="scroll-arrow right" id="scrollRight">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Horizontal scroll container -->
+  <div class="certs-scroll" id="certsScroll">
+    
+    <div class="cert-card reveal">
+      <div class="cert-glow"></div>
+      <div class="cert-img">
+        <img src="Images/mondial certificate.jpeg" alt="Certificate Name">
+      </div>
+      <h3 class="cert-name">Certificate Of Completion</h3>
+      <p class="cert-org">Mondial Group</p>
+      <p class="cert-date">2025</p>
+    </div>
+    
+    <div class="cert-card reveal">
+      <div class="cert-glow"></div>
+      <div class="cert-img">
+        <img src="Images/Screenshot 2024-12-04 150323.png" alt="Certificate Name">
+      </div>
+      <h3 class="cert-name">Certificate Of Completion</h3>
+      <p class="cert-org">Great Learning</p>
+      <p class="cert-date">2025</p>
+    </div>
+
+    <div class="cert-card reveal">
+  <div class="cert-glow"></div>
+  <div class="cert-img portrait"> <!-- Added portrait class -->
+    <img src="Images/Certificate.jpeg" alt="Certificate Name">
+  </div>
+  <h3 class="cert-name">Certificate Of Excellence</h3>
+  <p class="cert-org">Bath Spa University</p>
+  <p class="cert-date">2025</p>
+</div>
+    
+    <div class="cert-card reveal">
+      <div class="cert-glow"></div>
+      <div class="cert-img">
+        <img src="Images/Screenshot 2026-03-11 203733.png" alt="Certificate Name">
+      </div>
+      <h3 class="cert-name">Certificate Of Completion</h3>
+      <p class="cert-org">LinkedIn Learning</p>
+      <p class="cert-date">2025</p>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-glow"></div>
+      <div class="cert-img">
+        <img src="Images/WhatsApp Image 2026-03-11 at 8.41.39 PM.jpeg" alt="Certificate Name">
+      </div>
+      <h3 class="cert-name">Certificate Of Participation</h3>
+      <p class="cert-org">Google Developer Group</p>
+      <p class="cert-date">2026</p>
+    </div>
+    
+    <div class="cert-card reveal">
+      <div class="cert-glow"></div>
+      <div class="cert-img">
+        <img src="Images/618ac08a-b22e-4a0b-8720-6e460f274ee9.jpg" alt="Certificate Name">
+      </div>
+      <h3 class="cert-name">Certificate Of Completion</h3>
+      <p class="cert-org">SoloLearn</p>
+      <p class="cert-date">2024</p>
+    </div>
+    
+    <div class="cert-card reveal">
+      <div class="cert-glow"></div>
+      <div class="cert-img">
+        <img src="Images/Screenshot 2024-12-04 145454.png" alt="Certificate Name">
+      </div>
+      <h3 class="cert-name">Certificate Of Completion</h3>
+      <p class="cert-org">LinkedIn Learning</p>
+      <p class="cert-date">2025</p>
+    </div>
+    
+    <div class="cert-card reveal">
+      <div class="cert-glow"></div>
+      <div class="cert-img">
+        <img src="Images/Screenshot 2024-12-04 145629.png" alt="Certificate Name">
+      </div>
+      <h3 class="cert-name">Certificate Of Completion</h3>
+      <p class="cert-org">LinkedIn Learning</p>
+      <p class="cert-date">2025</p>
+    </div>
+
+  </div>
+</section>
+<!-- JavaScript -->
+<script>
+  const scrollContainer = document.getElementById('certsScroll');
+  const scrollLeftBtn = document.getElementById('scrollLeft');
+  const scrollRightBtn = document.getElementById('scrollRight');
+  
+  if (scrollContainer && scrollLeftBtn && scrollRightBtn) {
+    const scrollAmount = 320; // Adjust as needed
+    
+    scrollLeftBtn.addEventListener('click', () => {
+      scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+    
+    scrollRightBtn.addEventListener('click', () => {
+      scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+    
+    // Update button states
+    const updateButtons = () => {
+      scrollLeftBtn.disabled = scrollContainer.scrollLeft <= 0;
+      scrollRightBtn.disabled = scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 10;
+    };
+    
+    scrollContainer.addEventListener('scroll', updateButtons);
+    window.addEventListener('resize', updateButtons);
+    setTimeout(updateButtons, 100);
+  }
+</script>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-ring" style="width:500px;height:500px;top:-210px;right:-210px;border-color:rgba(128,0,128,0.15);"></div>
+  <div class="sec-ring" style="width:310px;height:310px;bottom:-130px;left:-130px;border-color:rgba(159,43,104,0.15);"></div>
+  <div class="sec-ring" style="width:170px;height:170px;top:25%;left:3%;border-color:rgba(112,41,99,0.16);"></div>
+  <div class="sec-ring" style="width:115px;height:115px;bottom:22%;right:4%;border-color:rgba(128,0,128,0.14);"></div>
+  <div class="sec-head reveal">
+    <span class="sec-label">What I can do for you</span>
+    <h2 class="sec-title">My <em>Services</em></h2>
+    <div class="sec-rule"><span></span><i></i><span></span></div>
+  </div>
+  <div class="srv-grid">
+
+    <div class="srv-card reveal">
+      <div class="srv-ico">🎨</div>
+      <h3 class="srv-name">UI/UX Design</h3>
+      <p class="srv-desc">Designing intuitive, user-centered interfaces from research and wireframes all the way to polished, pixel-perfect visuals.</p>
+      <div class="srv-tags">
+        <span class="srv-tag">Figma</span>
+        <span class="srv-tag">Wireframing</span>
+        <span class="srv-tag">Prototyping</span>
+        <span class="srv-tag">User Research</span>
+      </div>
+    </div>
+
+    <div class="srv-card reveal">
+      <div class="srv-ico">💻</div>
+      <h3 class="srv-name">Web Development</h3>
+      <p class="srv-desc">Building responsive, fast, and accessible websites and web apps — clean code that brings designs to life perfectly.</p>
+      <div class="srv-tags">
+        <span class="srv-tag">HTML & CSS</span>
+        <span class="srv-tag">JavaScript</span>
+        <span class="srv-tag">React</span>
+        <span class="srv-tag">Responsive</span>
+      </div>
+    </div>
+
+    <div class="srv-card reveal">
+      <div class="srv-ico">✦</div>
+      <h3 class="srv-name">Creative Development</h3>
+      <p class="srv-desc">Crafting interactive, animated, and visually expressive digital experiences that go beyond the ordinary.</p>
+      <div class="srv-tags">
+        <span class="srv-tag">Animations</span>
+        <span class="srv-tag">Interactions</span>
+        <span class="srv-tag">Creative UI</span>
+        <span class="srv-tag">Motion</span>
+      </div>
+    </div>
+
+    <div class="srv-card reveal">
+      <div class="srv-ico">📱</div>
+      <h3 class="srv-name">App Design</h3>
+      <p class="srv-desc">Designing clean, thoughtful mobile app interfaces with smooth flows, strong visual hierarchy, and delightful details.</p>
+      <div class="srv-tags">
+        <span class="srv-tag">Mobile UI</span>
+        <span class="srv-tag">Figma</span>
+        <span class="srv-tag">User Flows</span>
+        <span class="srv-tag">Design Systems</span>
+      </div>
+    </div>
+
+    <div class="srv-card reveal">
+  <div class="srv-ico">🎯</div>
+  <h3 class="srv-name">Branding & Identity</h3>
+  <p class="srv-desc">Creating cohesive visual identities that tell your story — from logo design and color palettes to brand guidelines.</p>
+  <div class="srv-tags">
+    <span class="srv-tag">Logo Design</span>
+    <span class="srv-tag">Color Theory</span>
+    <span class="srv-tag">Typography</span>
+    <span class="srv-tag">Brand Guidelines</span>
+  </div>
+</div>
+
+<div class="srv-card reveal">
+  <div class="srv-ico">📐</div>
+  <h3 class="srv-name">Wireframing & Prototyping</h3>
+  <p class="srv-desc">Mapping out user flows and creating clickable prototypes to test ideas before diving into visual design.</p>
+  <div class="srv-tags">
+    <span class="srv-tag">Low-fidelity</span>
+    <span class="srv-tag">High-fidelity</span>
+    <span class="srv-tag">User Flows</span>
+    <span class="srv-tag">Figma</span>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-ring" style="width:530px;height:530px;top:-210px;right:-210px;border-color:rgba(128,0,128,0.15);"></div>
+  <div class="sec-ring" style="width:330px;height:330px;bottom:-140px;left:-140px;border-color:rgba(159,43,104,0.15);"></div>
+  <div class="sec-ring" style="width:180px;height:180px;top:22%;left:3%;border-color:rgba(112,41,99,0.16);"></div>
+  <div class="sec-ring" style="width:120px;height:120px;bottom:18%;right:4%;border-color:rgba(128,0,128,0.15);"></div>
+  <div class="sec-head reveal">
+    <span class="sec-label">Let's work together</span>
+    <h2 class="sec-title">Get in <em>Touch</em></h2>
+    <div class="sec-rule"><span></span><i></i><span></span></div>
+  </div>
+  <div class="con-wrap">
+    <p class="con-sub reveal">Have a project or collaboration idea? Reach out — I'd love to hear from you </p>
+    <div class="con-cards reveal">
+      <!-- ✏️ Replace href and text with your real phone -->
+      <a href="tel:+971XXXXXXXXX" class="con-card">
+        <div class="con-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="con-label">Phone</div>
+        <div class="con-value"><small>+971 56 3589896</small></div>
+      </a>
+      <!-- ✏️ Replace href and text with your real email -->
+      <a href="mailto:rahma@gmail.com" class="con-card">
+        <div class="con-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="con-label">Gmail</div>
+        <div class="con-value"><small>rahmareyaz91@gmail.com</small></div>
+      </a>
+      <!-- ✏️ Replace href and text with your LinkedIn -->
+      <a href="https://linkedin.com/in/rahmareyaz" target="_blank" class="con-card">
+        <div class="con-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div class="con-label">LinkedIn</div>
+        <div class="con-value"><small>www.linkedin.com/in/rahma-reyaz-577092335
+</small></div>
+      </a>
+    </div>
+    <div class="about-text reveal">
+  <p class="quote">"Design is not just how it looks, but how it works. I strive to create digital experiences that are both visually stunning and intuitively functional."</p>
+</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">Rahma Reyaz.</div>
+  <p class="foot-copy">© 2025 Rahma Reyaz — Designed & built with care</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  setTimeout(() => { document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible')); }, 1500);
+
+  const secs = document.querySelectorAll('section[id]');
+  const lnks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 160) cur = s.id; });
+    lnks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  });
+</script>
 </body>
 </html>
